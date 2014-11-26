@@ -23,4 +23,4 @@ app:
     - dbinit
     - db:mysql
   ports:
-    - "8080"
+    - "8080:8080"

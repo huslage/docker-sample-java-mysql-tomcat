@@ -15,4 +15,7 @@ Then run `fig ps` to find the app port.
 * `docker build -t javatest .`
 * `docker run -ti -P --rm --link mysql:mysql javatest`
 
+## Update Procedure
+
+* `docker run --link=dockersamplejavamysqltomcat_db_1:mysql --entrypoint="mysql" -v $(pwd):/host mysql:5.6.21 -u java --password=java --host=mysql javatest < update.sql`
 You should be able to access the app on http://<docker-host-ip>:<app-port>/dbtest
