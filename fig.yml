@@ -1,18 +1,19 @@
 db:
-  image: mysql
+  image: mysql:5.6.21
   environment:
     MYSQL_USER: java
     MYSQL_PASSWORD: java
     MYSQL_DATABASE: javatest
+    MYSQL_ROOT_PASSWORD: java
   ports:
     - "3306"
 
 dbinit:
-  image: mysql
+  image: mysql:5.6.21
   entrypoint: /bin/bash
   volumes:
     - .:/host
-  command: -c "sleep 4; mysql -u java --password=java -h mysql javatest < /host/init.sql; exit 0"
+  command: -c "sleep 10; mysql -u java --password=java -h mysql javatest < /host/init.sql; exit 0"
   links:
     - db:mysql
 
