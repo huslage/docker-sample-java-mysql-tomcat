@@ -10,8 +10,8 @@ Then run `fig ps` to find the app port.
 
 ## Standalone
 
-* `docker run -d -P -e MYSQL_USER=java -e MYSQL_PASSWORD=java -e MYSQL_DATABASE=javatest --name mysql orchardup/mysql`
-* `docker run -ti --rm --link mysql:mysql -v $(pwd):/host --entrypoint /bin/bash orchardup/mysql -c "sleep 4; mysql -u java --password=java -h mysql javatest < /host/init.sql; exit 0"`
+* `docker run -d -P -e MYSQL_USER=java -e MYSQL_PASSWORD=java -e MYSQL_DATABASE=javatest MYSQL_ROOT_PASSWORD=java --name mysql mysql`
+* `docker run -ti --rm --link mysql:mysql -v $(pwd):/host --entrypoint /bin/bash mysql -c "sleep 10; mysql -u java --password=java -h mysql javatest < /host/init.sql; exit 0"`
 * `docker build -t javatest .`
 * `docker run -ti -P --rm --link mysql:mysql javatest`
 
